@@ -20,6 +20,13 @@ Yoto cards support custom audio content, but loading a full audiobook requires s
 
 ---
 
+## Requirements
+
+- macOS 14 Sonoma or later
+- A [Yoto account](https://my.yotoplay.com) (only needed for the upload step)
+
+---
+
 ## How to use it
 
 ### 1 — Select your audiobook
@@ -95,13 +102,6 @@ Your sign-in is saved securely in the macOS Keychain so you only need to do it o
 | Upload | Sent to Yoto's servers — only when you click Upload |
 
 No analytics. No telemetry. No third-party services.
-
----
-
-## Requirements
-
-- macOS 14 Sonoma or later
-- A [Yoto account](https://my.yotoplay.com) (only needed for the upload step)
 
 ---
 
