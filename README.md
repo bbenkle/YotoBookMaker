@@ -44,6 +44,20 @@ Choose how chapters should be detected and pick your export settings.
 
 **Export options:** M4A, M4B, or WAV · 64–192 kbps · Mono (recommended for Yoto)
 
+#### JSON Timestamps format
+
+If you choose **JSON Timestamps**, browse to a `.json` file containing your chapter list. Each entry needs a title and a start/end time:
+
+```json
+[
+  { "title": "Opening Credits", "start": "0:00:00", "end": "0:05:42" },
+  { "title": "Chapter 1",       "start": "0:05:42", "end": "0:38:17" },
+  { "title": "Chapter 2",       "start": "0:38:17", "end": "1:11:04" }
+]
+```
+
+Times use `H:MM:SS` or `M:SS` format. Milliseconds are also supported (`start_ms` / `end_ms`). An example file is included in the [repository](example-chapters.json).
+
 ---
 
 ### 3 — Split
