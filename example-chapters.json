@@ -1,0 +1,12 @@
+[
+  { "title": "Opening Credits",     "start": "0:00:00", "end": "0:05:42" },
+  { "title": "Chapter 1",           "start": "0:05:42", "end": "0:38:17" },
+  { "title": "Chapter 2",           "start": "0:38:17", "end": "1:11:04" },
+  { "title": "Chapter 3",           "start": "1:11:04", "end": "1:46:29" },
+  { "title": "Chapter 4",           "start": "1:46:29", "end": "2:22:53" },
+  { "title": "Chapter 5",           "start": "2:22:53", "end": "2:58:11" },
+  { "title": "Chapter 6",           "start": "2:58:11", "end": "3:34:40" },
+  { "title": "Chapter 7",           "start": "3:34:40", "end": "4:09:06" },
+  { "title": "Chapter 8",           "start": "4:09:06", "end": "4:45:33" },
+  { "title": "Author's Note",       "start": "4:45:33", "end": "4:58:00" }
+]
