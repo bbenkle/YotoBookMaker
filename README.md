@@ -39,7 +39,7 @@ Choose how chapters should be detected and pick your export settings.
 | Method | When to use |
 |---|---|
 | **Embedded Metadata** | Best choice — works with most M4B files from Audible, iTunes, Libro.fm, etc. Instant and accurate. |
-| **Silence Detection** | For files with no chapter markers. Finds chapter breaks by analysing gaps in the audio. |
+| **Silence Detection** | For files with no chapter markers. Finds chapter breaks by analyzing gaps in the audio. |
 | **JSON Timestamps** | Provide a JSON file with exact start times if you need full manual control. |
 
 **Export options:** M4A, M4B, or WAV · 64–192 kbps · Mono (recommended for Yoto)
@@ -68,11 +68,11 @@ Click **Start Splitting**. A live log shows what's happening as each chapter is 
 
 ### 4 — Icons
 
-Each chapter gets a colour-coded pixel art icon, generated entirely on your Mac — no internet needed.
+Each chapter gets a color-coded pixel art icon, generated entirely on your Mac — no internet needed.
 
 - **Generate All** — auto-generate icons for every chapter
-- **Randomize All** — give every chapter a unique random colour scheme
-- **Per-chapter customisation** — hover any chapter card to generate, redo, upload your own image, or customise the colours and pattern
+- **Randomize All** — give every chapter a unique random color scheme
+- **Per-chapter customization** — hover any chapter card to generate, redo, upload your own image, or customize the colors and pattern
 - **Bulk import** — choose a folder of images and they'll be matched to chapters by number in the filename (e.g. `ch-01.png`, `Chapter 22.jpeg`)
 
 ---
@@ -109,7 +109,7 @@ No analytics. No telemetry. No third-party services.
 
 YotoBookMaker is an independent, community-built tool. It is **not affiliated with, endorsed by, or supported by Yoto Limited**. Yoto, the Yoto logo, and Yoto Player are trademarks of Yoto Limited.
 
-Only upload audio content you own or have the legal right to use — such as DRM-free audiobook purchases or public domain recordings. Do not upload commercially licensed content without the rights holder's authorisation.
+Only upload audio content you own or have the legal right to use — such as DRM-free audiobook purchases or public domain recordings. Do not upload commercially licensed content without the rights holder's authorization.
 
 ---
 
