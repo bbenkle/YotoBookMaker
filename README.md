@@ -42,7 +42,7 @@ Choose how chapters should be detected and pick your export settings.
 | **Silence Detection** | For files with no chapter markers. Finds chapter breaks by analyzing gaps in the audio. |
 | **JSON Timestamps** | Provide a JSON file with exact start times if you need full manual control. |
 
-**Export options:** M4A, M4B, or WAV · 64–192 kbps · Mono (recommended for Yoto)
+**Export options:** M4A or M4B · 64–192 kbps · Mono (recommended for Yoto)
 
 #### JSON Timestamps format
 
