@@ -53,6 +53,8 @@ Choose how chapters should be detected and pick your export settings.
 
 **Export options:** M4A or M4B · 64–192 kbps · Mono (recommended for Yoto)
 
+**Yoto has a maximum upload size of 500MBs for Make Your Own Playlist:** Please use the size estimator to find the correct export. 
+
 #### JSON Timestamps format
 
 If you choose **JSON Timestamps**, browse to a `.json` file containing your chapter list. Each entry needs a title and a start/end time:
@@ -100,7 +102,7 @@ Your sign-in is saved securely in the macOS Keychain so you only need to do it o
 ![](images/YotoSign-in.png)
 ![](images/YotoURL.png)
 ![](images/Connected.png)
-<img width="1271" height="885" alt="UploadYoto" src="https://github.com/user-attachments/assets/04001e50-d9b8-4cd5-8a61-a6ce5761da52" />
+![](images/UploadYoto.png)
 
 ---
 
