@@ -35,6 +35,8 @@ Drop an audiobook file onto the window or click **Browse Files**. The book title
 
 **Supported formats:** M4B · M4A · MP3 · MP4 · WAV · AAC
 
+![](images/Select.png)
+
 ---
 
 ### 2 — Configure
@@ -65,12 +67,14 @@ If you choose **JSON Timestamps**, browse to a `.json` file containing your chap
 
 Times use `H:MM:SS` or `M:SS` format. Milliseconds are also supported (`start_ms` / `end_ms`). An example file is included in the [repository](example-chapters.json).
 
+![](images/Configure.png)
 ---
 
 ### 3 — Split
 
 Click **Start Splitting**. A live log shows what's happening as each chapter is detected and exported. The chapter list stays on screen after splitting so you can review results, and you can re-run with different settings at any time.
 
+![]("images/Start Splitting.png") 
 ---
 
 ### 4 — Icons
