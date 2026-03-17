@@ -74,7 +74,8 @@ Times use `H:MM:SS` or `M:SS` format. Milliseconds are also supported (`start_ms
 
 Click **Start Splitting**. A live log shows what's happening as each chapter is detected and exported. The chapter list stays on screen after splitting so you can review results, and you can re-run with different settings at any time.
 
-![]("images/Start Splitting.png") 
+![]("images/StartSplitting.png") 
+![](images/SplitOutput.png)
 ---
 
 ### 4 — Icons
@@ -86,14 +87,20 @@ Each chapter gets a color-coded pixel art icon, generated entirely on your Mac �
 - **Per-chapter customization** — hover any chapter card to generate, redo, upload your own image, or customize the colors and pattern
 - **Bulk import** — choose a folder of images and they'll be matched to chapters by number in the filename (e.g. `ch-01.png`, `Chapter 22.jpeg`)
 
+![](images/IconGeneration.png)
 ---
 
 ### 5 — Upload
+![](images/PlaylistTitle _CoverImage.png)
 
 Sign in to your Yoto account — no password is entered into the app; you approve access in your browser. Then click **Upload to Yoto** and the app handles the rest: uploading audio, icons, and creating a ready-to-play playlist on your card.
 
 Your sign-in is saved securely in the macOS Keychain so you only need to do it once.
 
+![](images/YotoSign-in.png)
+![](images/YotoURL.png)
+![](images/Connected.png)
+![](images/Upload.png)
 ---
 
 ## Privacy
