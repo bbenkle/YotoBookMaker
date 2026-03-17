@@ -91,7 +91,7 @@ Each chapter gets a color-coded pixel art icon, generated entirely on your Mac �
 ---
 
 ### 5 — Upload
-![](images/PlaylistTitle _CoverImage.png)
+![](images/PlaylistTitleCoverImage.png)
 
 Sign in to your Yoto account — no password is entered into the app; you approve access in your browser. Then click **Upload to Yoto** and the app handles the rest: uploading audio, icons, and creating a ready-to-play playlist on your card.
 
@@ -100,7 +100,8 @@ Your sign-in is saved securely in the macOS Keychain so you only need to do it o
 ![](images/YotoSign-in.png)
 ![](images/YotoURL.png)
 ![](images/Connected.png)
-![](images/Upload.png)
+<img width="1271" height="885" alt="UploadYoto" src="https://github.com/user-attachments/assets/04001e50-d9b8-4cd5-8a61-a6ce5761da52" />
+
 ---
 
 ## Privacy
