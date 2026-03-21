@@ -20,6 +20,13 @@ Yoto cards support custom audio content, but loading a full audiobook requires s
 
 ---
 
+## Requirements
+
+- macOS 14 Sonoma or later
+- A [Yoto account](https://my.yotoplay.com) (only needed for the upload step)
+
+---
+
 ## How to use it
 
 ### 1 — Select your audiobook
@@ -27,6 +34,8 @@ Yoto cards support custom audio content, but loading a full audiobook requires s
 Drop an audiobook file onto the window or click **Browse Files**. The book title and author are read automatically from the file's embedded metadata.
 
 **Supported formats:** M4B · M4A · MP3 · MP4 · WAV · AAC
+
+![](images/Select.png)
 
 ---
 
@@ -49,6 +58,8 @@ Choose how chapters should be detected and pick your export settings.
 | Format | M4A · M4B · WAV |
 | Bitrate | **Original** (default — no re-encoding) · 64 · 96 · 128 · 192 kbps |
 | Mono | On by default — recommended for Yoto |
+
+**Yoto has a maximum upload size of 500 MB for Make Your Own Playlist.** Please use the size estimator to find the correct export settings for your book.
 
 The estimated export size is shown before you split. When using **Original** quality, the size matches your source file exactly.
 
@@ -80,11 +91,17 @@ Times use `H:MM:SS` or `M:SS` format. Milliseconds are also supported (`start_ms
 
 > **Tip:** if you've already split an audiobook using the Metadata method, the `_chapters.json` file it produces can be used directly as input for JSON detection on another file.
 
+![](images/Configure.png)
+
 ---
 
 ### 3 — Split
 
 Click **Start Splitting**. A live log shows what's happening as each chapter is detected and exported, along with an elapsed timer. The chapter list stays on screen after splitting so you can review results, and you can re-run with different settings at any time.
+
+![](images/StartSplitting.png)
+
+![](images/SplitOutput.png)
 
 ---
 
@@ -97,13 +114,22 @@ Each chapter gets a color-coded pixel art icon, generated entirely on your Mac �
 - **Per-chapter customization** — hover any chapter card to generate, redo, upload your own image, or customize the colors and pattern
 - **Bulk import** — choose a folder of images and they'll be matched to chapters by number in the filename (e.g. `ch-01.png`, `Chapter 22.jpeg`)
 
+![](images/IconGeneration.png)
+
 ---
 
 ### 5 — Upload
 
+![](images/PlaylistTitleCoverImage.png)
+
 Sign in to your Yoto account — no password is entered into the app; you approve access in your browser. Then click **Upload to Yoto** and the app handles the rest: uploading audio, icons, and creating a ready-to-play playlist on your card.
 
 Your sign-in is saved securely in the macOS Keychain so you only need to do it once.
+
+![](images/YotoSign-in.png)
+![](images/YotoURL.png)
+![](images/Connected.png)
+![](images/UploadYoto.png)
 
 ---
 
@@ -124,13 +150,6 @@ The app checks for new releases automatically on launch. When an update is avail
 | Upload | Sent to Yoto's servers — only when you click Upload |
 
 No analytics. No telemetry. No third-party services.
-
----
-
-## Requirements
-
-- macOS 14 Sonoma or later
-- A [Yoto account](https://my.yotoplay.com) (only needed for the upload step)
 
 ---
 
