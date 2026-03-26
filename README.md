@@ -6,6 +6,7 @@ A native macOS app that splits audiobook files into individual chapter tracks an
 
 ![Platform](https://img.shields.io/badge/macOS-14%2B-blue) ![License](https://img.shields.io/badge/license-MIT-green)
 
+Also available for **[Windows →](https://github.com/bbenkle/YotoBookMaker-Windows)**
 ---
 
 ## Download
