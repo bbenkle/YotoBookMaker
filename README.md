@@ -1,6 +1,6 @@
 # YotoBookMaker
 
-A native macOS app that splits audiobook files into individual chapter tracks and uploads them directly to your [Yoto](https://yotoplay.com) player.
+A native macOS app that splits audiobook files into individual chapter tracks and uploads them directly to your [Yoto](https://yotoplay.com) playlists.
 
 > **Independent tool — not affiliated with or endorsed by Yoto Limited.**
 
