@@ -1,12 +1,11 @@
 # YotoBookMaker
 
-A native macOS app that splits audiobook files into individual chapter tracks and uploads them directly to your [Yoto](https://yotoplay.com) playlists.
+A native macOS app for getting audio onto your [Yoto](https://yotoplay.com) player — split an audiobook into chapters, or upload a folder of audio files directly as a playlist.
 
 > **Independent tool — not affiliated with or endorsed by Yoto Limited.**
 
 ![Platform](https://img.shields.io/badge/macOS-14%2B-blue) ![License](https://img.shields.io/badge/license-MIT-green)
 
-Also available for **[Windows →](https://github.com/bbenkle/YotoBookMaker-Windows)**
 ---
 
 ## Download
@@ -17,18 +16,24 @@ Grab the latest release from the [Releases](../../releases) page, open the `.dmg
 
 ## What it does
 
-Yoto cards support custom audio content, but loading a full audiobook requires splitting it into individual chapter files and uploading each one. YotoBookMaker handles the entire process in five guided steps.
+YotoBookMaker supports three workflows:
+
+**Audiobook workflow** — Load a single audiobook file, split it into chapters using embedded metadata, silence detection, or custom timestamps, add icons, and upload to Yoto in five guided steps. The upload step is optional — you can split without one.
+
+**Batch split workflow** — Pick a folder of audiobooks and split every file at once using shared export settings. No icons, no upload — pure batch splitting with per-file status and a cover image exported alongside each set of chapters.
+
+**Playlist workflow** — Pick a folder of audio files (music, narration, existing chapter files, or anything else), review and reorder the tracks, add icons, and upload directly to Yoto as a playlist. No splitting required.
 
 ---
 
 ## Requirements
 
 - macOS 14 Sonoma or later
-- A [Yoto account](https://my.yotoplay.com) (only needed for the upload step)
+- A [Yoto account](https://my.yotoplay.com) (only needed if uploading — you can split without one)
 
 ---
 
-## How to use it
+## Audiobook workflow
 
 ### 1 — Select your audiobook
 
@@ -57,8 +62,9 @@ Choose how chapters should be detected and pick your export settings.
 | Setting | Options |
 |---|---|
 | Format | M4A · M4B · WAV |
-| Bitrate | **Original** (default — no re-encoding) · 64 · 96 · 128 · 192 kbps |
+| Bitrate | **Original (no re-encode)** (default) · 32 · 48 · 64 · 96 · 128 · 192 kbps |
 | Mono | On by default — recommended for Yoto |
+| Create subfolder | On by default — creates a `<title>_chapters` folder in your chosen location. Turn off to save files directly in the chosen folder. |
 
 **Yoto has a maximum upload size of 500 MB for Make Your Own Playlist.** Please use the size estimator to find the correct export settings for your book.
 
@@ -100,6 +106,14 @@ Times use `H:MM:SS` or `M:SS` format. Milliseconds are also supported (`start_ms
 
 Click **Start Splitting**. A live log shows what's happening as each chapter is detected and exported, along with an elapsed timer. The chapter list stays on screen after splitting so you can review results, and you can re-run with different settings at any time.
 
+A `<title>_chapters.json` file is written to the output folder automatically — it lists every chapter with its title, timestamps, and file path. This file can be used as JSON Timestamps input if you want to re-split the same book with different export settings.
+
+If the source file contains embedded cover art, a `cover.jpg` is written to the output folder alongside the chapter files.
+
+Once splitting is complete, a **Move Original to Trash** button appears in the results banner if you want to clean up the source file.
+
+> **DRM-protected files:** YotoBookMaker only works with DRM-free audio. Files protected by FairPlay or other DRM are detected automatically and rejected with a clear error — only DRM-free purchases, rips from your own CDs, or public domain recordings can be split.
+
 ![](images/StartSplitting.png)
 
 ![](images/SplitOutput.png)
@@ -131,6 +145,104 @@ Your sign-in is saved securely in the macOS Keychain so you only need to do it o
 ![](images/YotoURL.png)
 ![](images/Connected.png)
 ![](images/UploadYoto.png)
+
+---
+
+## Playlist workflow
+
+Click **Choose Folder** in the "Upload audio files" section on the welcome screen. Pick any folder of audio files — music, narration, existing chapter splits, or any other content.
+
+Track titles are read from each file's embedded metadata and fall back to the filename if none is found.
+
+### 1 — Playlist Setup
+
+Review the track list loaded from your folder. You can:
+
+- **Edit track titles** — click any title to change it
+- **Reorder tracks** — drag rows into the order you want
+- **Remove a single track** — hover the row and click the × button that appears, or select it and press Delete
+- **Remove multiple tracks** — click to select, then Shift-click or Command-click to extend the selection, then press Delete or click the **Remove N Tracks** button in the toolbar
+- **Add more files** — click **Add Files…** to include audio files from other locations
+- **Set the playlist name** — used as the title when uploading to Yoto
+
+### 2 — Icons
+
+Same icon step as the audiobook workflow — generate pixel art icons per track, customize colors and patterns, or import your own images.
+
+### 3 — Upload
+
+Sign in to Yoto and click **Upload to Yoto**. The app uploads each track's audio and icon, then creates a ready-to-play playlist on your card.
+
+---
+
+## Batch split workflow
+
+Click **Choose Folder** in the "Split a folder of audiobooks" section on the welcome screen. Pick any folder containing M4B, M4A, MP3, or other audio files — every file in the folder will be split using its embedded chapter metadata.
+
+### 1 — Configure
+
+Set shared export settings that apply to every file in the folder:
+
+- **Format** — M4A or M4B
+- **Bitrate** — Original (no re-encode) or a specific kbps target
+- **Mono** — convert to mono (recommended for Yoto)
+
+Chapter detection is always **Embedded Metadata** in batch mode — the fastest and most reliable method. Silence detection and JSON timestamps require per-file configuration and are not available for batch runs.
+
+Each book's chapters are saved in a `<title>_chapters/` subfolder next to the source file. If a book has embedded cover art, a `cover.jpg` is written into that subfolder as well.
+
+### 2 — Batch Split
+
+A list shows every audiobook with a live status indicator:
+
+- **Queued** — waiting to be processed
+- **Splitting** — currently processing, with a per-file progress bar
+- **Done** — split successfully, with the chapter count
+- **Failed** — an error occurred (message shown inline)
+
+Files are processed one at a time in alphabetical order. A **Cancel** button stops the batch after the current file finishes. When the run is complete, a summary shows how many books succeeded and how many failed, with a **Split Another Folder** button to start over.
+
+---
+
+## CLI tool (yotosplit)
+
+YotoBookMaker includes a command-line tool for splitting audiobooks from scripts or automation pipelines — no UI needed.
+
+**Install once** via **Help → Install CLI Tool…** in the app, then use it from any terminal:
+
+```bash
+# Split a single file using embedded chapter metadata (default)
+yotosplit --input ~/audiobooks/Book.m4b
+
+# Silence detection with custom threshold
+yotosplit --input ~/audiobooks/Book.m4b --method silence --min-silence 2.5
+
+# Re-encode to 64 kbps mono, save directly in the output folder
+yotosplit --input ~/audiobooks/Book.m4b --output ~/Desktop/chapters --bitrate 64k
+
+# Move the original to Trash after a successful split
+yotosplit --input ~/audiobooks/Book.m4b --trash
+
+# Split every audiobook in a folder (embedded metadata, shared settings)
+yotosplit --folder ~/audiobooks --bitrate 64k --mono
+```
+
+Chapter list is printed to stdout (tab-separated: number, title, path) — easy to pipe into other tools. In folder mode, each line is prefixed with the source filename: `<filename>\t<number>\t<title>\t<path>`. Progress and log messages go to stderr. Exit code 0 on success, 1 on error.
+
+A `<title>_chapters.json` file is always written to the output directory alongside the audio files. If the source file contains embedded cover art, a `cover.jpg` is written there as well.
+
+```
+USAGE: yotosplit (--input <file> | --folder <path>)
+                 [--output <output>] [--method <method>]
+                 [--format <format>] [--bitrate <bitrate>]
+                 [--mono] [--no-mono]
+                 [--silence-threshold <dBFS>] [--min-silence <seconds>]
+                 [--json-file <path>] [--trash]
+```
+
+`--folder` is mutually exclusive with `--input`. In folder mode, `--method` is ignored — embedded metadata is always used.
+
+Run `yotosplit --help` for full option descriptions.
 
 ---
 
