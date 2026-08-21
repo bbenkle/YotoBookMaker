@@ -6,6 +6,8 @@ A native macOS app for getting audio onto your [Yoto](https://yotoplay.com) play
 
 ![Platform](https://img.shields.io/badge/macOS-14%2B-blue) ![License](https://img.shields.io/badge/license-MIT-green)
 
+Also available for **[Windows →](https://github.com/bbenkle/YotoBookMaker-Windows)**
+
 ---
 
 ## Download
