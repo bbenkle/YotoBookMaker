@@ -65,7 +65,7 @@ Choose how chapters should be detected and pick your export settings.
 |---|---|
 | Format | M4A · M4B · WAV |
 | Bitrate | **Original (no re-encode)** (default) · 32 · 48 · 64 · 96 · 128 · 192 kbps |
-| Mono | On by default — recommended for Yoto |
+| Mono | On by default — recommended for Yoto. Auto-enabled and locked when 32 or 48 kbps is selected (Apple's AAC-LC encoder can't produce stereo at those rates). Your prior stereo/mono preference is restored when you pick a higher bitrate. |
 | Create subfolder | On by default — creates a `<title>_chapters` folder in your chosen location. Turn off to save files directly in the chosen folder. |
 
 **Yoto has a maximum upload size of 500 MB for Make Your Own Playlist.** Please use the size estimator to find the correct export settings for your book.
@@ -187,7 +187,8 @@ Set shared export settings that apply to every file in the folder:
 
 - **Format** — M4A or M4B
 - **Bitrate** — Original (no re-encode) or a specific kbps target
-- **Mono** — convert to mono (recommended for Yoto)
+- **Mono** — convert to mono (recommended for Yoto). Auto-enabled and locked when 32 or 48 kbps is selected; your prior stereo/mono preference is restored when you pick a higher bitrate.
+- **Search subfolders** — off by default. Turn on to recursively scan nested folders, useful for collections organized as one folder per book (e.g. `Author/Series/Book Title/audio.m4b`). The app's own `*_chapters` output folders are automatically skipped so previously-split books aren't picked up on a rescan.
 
 Chapter detection is always **Embedded Metadata** in batch mode — the fastest and most reliable method. Silence detection and JSON timestamps require per-file configuration and are not available for batch runs.
 
