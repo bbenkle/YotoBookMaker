@@ -1,6 +1,6 @@
 # YotoBookMaker
 
-A native macOS app for getting audio onto your [Yoto](https://yotoplay.com) player — split an audiobook into chapters, or upload a folder of audio files directly as a playlist.
+A native macOS app for getting audio onto your [Yoto](https://yotoplay.com) player — split an audiobook into chapters, upload a folder of audio files directly as a playlist, or turn a podcast or live radio station into a streaming card.
 
 > **Independent tool — not affiliated with or endorsed by Yoto Limited.**
 
@@ -16,22 +16,27 @@ Grab the latest release from the [Releases](../../releases) page, open the `.dmg
 
 ---
 
-## What it does
-
-YotoBookMaker supports three workflows:
-
-**Audiobook workflow** — Load a single audiobook file, split it into chapters using embedded metadata, silence detection, or custom timestamps, add icons, and upload to Yoto in five guided steps. The upload step is optional — you can split without one.
-
-**Batch split workflow** — Pick a folder of audiobooks and split every file at once using shared export settings. No icons, no upload — pure batch splitting with per-file status and a cover image exported alongside each set of chapters.
-
-**Playlist workflow** — Pick a folder of audio files (music, narration, existing chapter files, or anything else), review and reorder the tracks, add icons, and upload directly to Yoto as a playlist. No splitting required.
-
----
-
 ## Requirements
 
 - macOS 14 Sonoma or later
-- A [Yoto account](https://my.yotoplay.com) (only needed if uploading — you can split without one)
+- A [Yoto account](https://my.yotoplay.com) (needed for uploading and for podcast and radio cards — you can split without one)
+- An internet connection on the Yoto player for podcast and radio cards, since they stream
+
+---
+
+## Workflows
+
+Pick a workflow on the welcome screen (**Choose Workflow** in the sidebar takes you back to it at any time). Each one has a step-by-step guide below.
+
+| Workflow | Use it to | Yoto account | Guide |
+|---|---|---|---|
+| **Audiobook** | Split one audiobook into chapters, add icons, and upload it as a playlist (or just split it) | Only to upload | [Audiobook workflow →](#audiobook-workflow) |
+| **Playlist** | Upload a folder of audio files as a playlist, no splitting needed | Yes | [Playlist workflow →](#playlist-workflow) |
+| **Batch split** | Split a whole folder of audiobooks at once with shared settings | No | [Batch split workflow →](#batch-split-workflow) |
+| **Podcast** | Make a card that streams episodes from a podcast, and refresh it later with new ones | Yes | [Podcast workflow →](#podcast-workflow) |
+| **Radio** | Make a card that plays live radio stations | Yes | [Radio workflow →](#radio-workflow) |
+
+**Also in this guide:** [Icons](#icons) · [Uploading to Yoto](#uploading-to-yoto) · [CLI tool](#cli-tool-yotosplit) · [Updates](#updates) · [Privacy](#privacy)
 
 ---
 
@@ -124,29 +129,15 @@ Once splitting is complete, a **Move Original to Trash** button appears in the r
 
 ### 4 — Icons
 
-Each chapter gets a color-coded pixel art icon, generated entirely on your Mac — no internet needed.
-
-- **Generate All** — auto-generate icons for every chapter
-- **Randomize All** — give every chapter a unique random color scheme
-- **Per-chapter customization** — hover any chapter card to generate, redo, upload your own image, or customize the colors and pattern
-- **Bulk import** — choose a folder of images and they'll be matched to chapters by number in the filename (e.g. `ch-01.png`, `Chapter 22.jpeg`)
-
-![](images/IconGeneration.png)
+Generate a pixel art icon for each chapter, pick an animation, or use your own images and GIFs. See **[Icons](#icons)** for everything this step can do.
 
 ---
 
 ### 5 — Upload
 
-![](images/PlaylistTitleCoverImage.png)
+Optional. Sign in to Yoto and upload the chapters as a ready-to-play playlist. See **[Uploading to Yoto](#uploading-to-yoto)**, including [retrying failed chapters](#retrying-failed-uploads).
 
-Sign in to your Yoto account — no password is entered into the app; you approve access in your browser. Then click **Upload to Yoto** and the app handles the rest: uploading audio, icons, and creating a ready-to-play playlist on your card.
-
-Your sign-in is saved securely in the macOS Keychain so you only need to do it once.
-
-![](images/YotoSign-in.png)
-![](images/YotoURL.png)
-![](images/Connected.png)
-![](images/UploadYoto.png)
+[↑ Back to workflows](#workflows)
 
 ---
 
@@ -169,11 +160,13 @@ Review the track list loaded from your folder. You can:
 
 ### 2 — Icons
 
-Same icon step as the audiobook workflow — generate pixel art icons per track, customize colors and patterns, or import your own images.
+Same as the audiobook workflow. See **[Icons](#icons)**.
 
 ### 3 — Upload
 
-Sign in to Yoto and click **Upload to Yoto**. The app uploads each track's audio and icon, then creates a ready-to-play playlist on your card.
+Sign in to Yoto and click **Upload to Yoto**. The app uploads each track's audio and icon, then creates a ready-to-play playlist on your card. See **[Uploading to Yoto](#uploading-to-yoto)**, including [retrying failed tracks](#retrying-failed-uploads).
+
+[↑ Back to workflows](#workflows)
 
 ---
 
@@ -204,6 +197,131 @@ A list shows every audiobook with a live status indicator:
 - **Failed** — an error occurred (message shown inline)
 
 Files are processed one at a time in alphabetical order. A **Cancel** button stops the batch after the current file finishes. When the run is complete, a summary shows how many books succeeded and how many failed, with a **Split Another Folder** button to start over.
+
+[↑ Back to workflows](#workflows)
+
+---
+
+## Podcast workflow
+
+Click **Add Podcast** in the "Podcast to card" section on the welcome screen. Episodes stream from the podcast's own servers when they play — nothing is downloaded or uploaded, and there's no size limit to worry about.
+
+### New Card
+
+1. **Find the show** — type a show name to search the Apple Podcasts directory, or paste the podcast's RSS feed link (not its website). Check the author and episode count in the results to pick the official show, then click **Select**.
+2. **Pick episodes** — tick the ones you want, or use **Latest 10**, **Latest 30**, **Select All**, or **Clear**. A card holds up to 100 episodes.
+3. **Options** — hover or click the ⓘ next to each option for an explanation:
+   - **Oldest first on card** — on: the card plays in order from the oldest episode you picked, good for a series. Off: the newest episode comes first, good for news.
+   - **Resolve tracking redirects** — follows ad-tracking redirects (Podtrac, Chartable, etc.) and saves the final audio address. Leave it off unless episodes won't play.
+4. **Create the card** — the card title comes from the show name (you can edit it), and the show artwork is used as both the card cover and every episode's icon.
+
+![](images/Podcast.png)
+
+### Refresh a Card
+
+Yoto's website has a Refresh button for podcast cards; this is the app's version of it. Switch to **Refresh a Card** to see your podcast cards that have a saved feed link — every card this app makes, and possibly ones made on Yoto's website.
+
+Click **Refresh** on a card and its episodes are replaced with the newest ones from the feed. Type how many to keep in **Keep the latest N episodes** (1–100, default 30). The card's title and cover stay the same, and the physical card keeps working without relinking.
+
+![](images/PodcastRefresh.png)
+
+### Explicit content
+
+Shows and episodes that their publisher marks as explicit show a red **E** badge. This relies on the publisher's own labels, and the app can't verify explicit material, so preview a show before giving it to a child.
+
+[↑ Back to workflows](#workflows)
+
+---
+
+## Radio workflow
+
+Click **Add Radio** in the "Radio to card" section on the welcome screen. Stations stream live, so the player needs to be online to play them.
+
+1. **Find stations** — search the [Radio Browser](https://www.radio-browser.info) directory by station name, or paste a stream URL. `.pls` and `.m3u` playlist links work too.
+2. **Add them to the card** — click **Add** on each station you want. Secure (`https`) streams are checked as you add them, and you'll see a warning if one looks like it won't play (for example, a link that returns a web page instead of audio). Plain `http` streams can't be checked from the app, so they're added unchecked.
+3. **Arrange** — under **On this card**, drag stations to reorder them and click a name to rename it.
+4. **Create the card** — the first station's name becomes the card title, and its logo becomes the cover when it's large enough. You can type your own title or pick your own cover; **Use Station Logo** switches back.
+
+![](images/Radio.png)
+
+Radio Browser is a community directory with no age ratings, and the app can't verify what a station plays. Listen first before giving a card to a child.
+
+[↑ Back to workflows](#workflows)
+
+---
+
+## Icons
+
+Used by the [audiobook](#audiobook-workflow) and [playlist](#playlist-workflow) workflows. Each chapter or track gets a color-coded pixel art icon, generated entirely on your Mac — no internet needed.
+
+- **Generate All** — auto-generate icons for every chapter
+- **Randomize All** — give every chapter a unique random color scheme. You're asked whether you want **All Animated**, **All Still**, or a **Mix**
+- **Per-chapter customization** — hover any chapter card to generate, redo, upload your own image, or customize the colors, pattern, and animation
+- **Bulk import** — choose a folder of images and they'll be matched to chapters by number in the filename (e.g. `ch-01.png`, `Chapter 22.jpeg`, `ch-07.gif`)
+
+![](images/IconGeneration.png)
+
+### Animated icons
+
+Generated icons can move on the player. Pick an animation in the icon editor:
+
+| Animation | What it does |
+|---|---|
+| **None** | A still icon |
+| **Scroll** | The background pattern slides diagonally |
+| **Orbit** | The accent dots circle around the edge |
+| **Twinkle** | The accent dots blink in pairs |
+| **Pulse** | The background gently brightens and dims |
+
+![](images/RandomizeAll.png)
+
+### Your own animated GIFs
+
+You can use your own GIFs as chapter icons, and they stay animated on the player. Yoto only keeps the animation for GIFs that are exactly **16×16 pixels**. If a GIF is a different size, the app offers to **Auto-Resize** it for you (keeping every frame and its timing) or cancel. When you import a folder, you're asked once for all the wrong-size GIFs.
+
+![](images/ImportIcons.png)
+
+### Chapter numbers
+
+Chapter numbers are drawn with a hand-made pixel font, so they stay sharp and readable on the player's 16×16 screen.
+
+---
+
+## Uploading to Yoto
+
+Used by the [audiobook](#audiobook-workflow) and [playlist](#playlist-workflow) workflows.
+
+![](images/PlaylistTitleCoverImage.png)
+
+### Signing in and uploading
+
+1. Click **Sign In** (or **Sign In to Yoto**), then **Continue**. Yoto's sign-in page opens in your browser.
+2. Sign in, then click **Accept** on Yoto's **Authorize App** page.
+3. When the page says **You're signed in**, switch back to the app — it finishes signing in by itself. There's no code to copy, and your password is never entered into the app.
+4. Click **Upload to Yoto** and the app handles the rest: uploading audio, icons, and creating a ready-to-play playlist on your card.
+
+> **"This app is not verified by Yoto"** — you'll see this warning on the Authorize App page. It's expected: Yoto only verifies third-party apps once they have an established base of regular users, so new apps like this one show it for now. YotoBookMaker asks only to manage your Make Your Own content and to stay signed in. The page also lists "account details, including email address, region and language" — YotoBookMaker doesn't ask for these, and never reads or stores them.
+
+Your sign-in is saved securely in the macOS Keychain so you only need to do it once.
+
+Sign-in briefly uses port 8787 on your Mac to receive the reply from Yoto's page. If another app is using that port, the app asks you to close it and try again.
+
+![](images/YotoSign-in.png)
+![](images/YotoAuthorize.png)
+![](images/YotoSignedIn.png)
+![](images/Connected.png)
+![](images/UploadYoto.png)
+
+### Retrying failed uploads
+
+If some chapters fail to upload, you don't have to start over. Chapters that already made it to Yoto are remembered, so only the failed ones are sent again, and they're added to the card from the first attempt instead of making a second card. You can:
+
+- click **Retry N Failed Chapters** to re-send every failed chapter
+- click **Retry** on a single failed chapter to re-send just that one
+- click **Upload N Remaining** after cancelling, to pick up where you stopped
+- click **Create Card** if every chapter uploaded but creating the card itself failed
+
+Retries only remember chapters for the current project. If you quit the app or start a new project, the next upload sends everything again.
 
 ---
 
@@ -263,9 +381,13 @@ The app checks for new releases automatically on launch. When an update is avail
 | Icon generation | Stays entirely on your Mac |
 | Speech recognition (used during silence detection) | On-device. Only falls back to Apple's servers if the on-device model is unavailable — this is logged if it happens |
 | Update check | Sends a read-only request to the GitHub Releases API — no personal data |
+| Yoto sign-in | Happens on Yoto's own page in your browser. The app only keeps the sign-in tokens, in your Keychain — never your password, email, or account details |
 | Upload | Sent to Yoto's servers — only when you click Upload |
+| Podcast search | Your search words are sent to Apple's public iTunes Search API |
+| Podcast feeds and artwork | Fetched from the podcast's own host |
+| Radio search, stream checks, and logos | Your search words go to the Radio Browser directory; stream checks and logos are fetched from each station's servers |
 
-No analytics. No telemetry. No third-party services.
+No analytics. No telemetry. No accounts other than Yoto, and nothing about you is sent with searches.
 
 ---
 
